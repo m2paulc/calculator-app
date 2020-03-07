@@ -1,0 +1,71 @@
+@import url("https://fonts.googleapis.com/css?family=Oxanium&display=swap");
+
+/* resets */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.container {
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: #37474f;
+}
+
+.calc-container {
+	width: 14rem;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-auto-rows: minmax(50px, auto);
+	background: #cfd8dc;
+}
+
+.display {
+	grid-column: 1 / 5;
+	display: grid;
+	grid-template-rows: 1.25rem 2.25rem;
+	border: 2px solid #cfd8dc;
+	font-family: "Oxanium", sans-serif;
+}
+
+.view {
+	height: 2.25rem;
+	background: #212121;
+	color: #fff;
+	text-align: end;
+}
+
+.previous {
+	grid-row: 1 / 2;
+	font-size: 1rem;
+}
+
+.current {
+	grid-row: 2 / 3;
+	font-size: 2rem;
+}
+
+.clrBtn {
+	grid-row: 2 / 4;
+}
+
+.zero {
+	grid-column: 1 / 3;
+}
+
+button {
+	font-family: "Oxanium", sans-serif;
+	font-size: 2rem;
+	background: #cfd8dc;
+	outline-color: #cfd8dc;
+}
+
+.operations,
+.clrBtn,
+.eqBtn {
+	background: #ff6d00;
+	color: #fff;
+}
