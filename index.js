@@ -193,7 +193,6 @@ window.addEventListener('keyup', () => {
   if ((event.key >= 0 && event.which >= 48) && (event.key <= 9 && event.which <= 57)) {
     calculator.appendNumber(event.key);
     calculator.updateDisplay();
-    console.log(`to event: ${event.key} to which ${event.which}`);
   }
   //clear key
   if (event.key === 'Escape' && event.which === 27) {
