@@ -1,4 +1,3 @@
-// define all variables
 //displays
 const prevDisplay = document.querySelector('.previous');
 const currDisplay = document.querySelector('.current');
@@ -17,6 +16,11 @@ const numberButtons = document.querySelectorAll('.numbers');
 //operation buttons
 const operationButtons = document.querySelectorAll('.operations');
 
+//memory holder
+const memoryArray = [];
+//memory counter
+let recallClicked = 0;
+
 //create a Calculator class with methods for use in operations
 class Calculator {
   constructor(prevDisplay, currDisplay) {
@@ -30,6 +34,34 @@ class Calculator {
     this.currentOperand = '';
     this.previousOperand = '';
     this.operation = '';
+    recallClicked = 0;
+  }
+
+  memoryAdd(num) {
+    if (this.currentOperand === '') return;
+    //if that number has already been stored, do nothing.
+    if (memoryArray.includes(num)) return;
+    memoryArray.push(num);
+  }
+
+  memoryRemove() {
+    if (memoryArray.length === 0) return;
+    //remove the specific number currently displayed if it exist in memoryArray
+    let removedItem = '';
+    if (memoryArray.includes(this.currentOperand) && memoryArray.indexOf(this.currentOperand) > -1) {
+      removedItem = memoryArray.splice(memoryArray.indexOf(this.currentOperand), 1);
+    } else {
+      //remove the last num in the memory
+      memoryArray.pop();
+    }
+  }
+
+  memoryRecall(recalled) {
+    if (memoryArray.length === 0) return;
+    //recalls the last number entered
+    if (recalled > memoryArray.length) return;
+    //recall the last number added to memory
+    this.currentOperand = memoryArray[memoryArray.length - recalled];
   }
 
   sign() {
@@ -130,6 +162,20 @@ signButton.addEventListener('click', () => {
 
 percentageButton.addEventListener('click', () => {
   calculator.percentage();
+  calculator.updateDisplay();
+});
+
+memoryAddButton.addEventListener('click', () => {
+  calculator.memoryAdd(currDisplay.innerText);
+});
+
+memoryRemoveButton.addEventListener('click', () => {
+  calculator.memoryRemove();
+});
+
+memoryRecallButton.addEventListener('click', () => {
+  recallClicked += 1;
+  calculator.memoryRecall(recallClicked);
   calculator.updateDisplay();
 });
 
