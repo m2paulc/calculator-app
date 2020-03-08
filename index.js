@@ -195,7 +195,6 @@ window.addEventListener('keyup', () => {
     calculator.updateDisplay();
     console.log(`to event: ${event.key} to which ${event.which}`);
   }
-
   //clear key
   if (event.key === 'Escape' && event.which === 27) {
     calculator.clear();
