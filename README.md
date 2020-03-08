@@ -27,6 +27,9 @@ List of todos in order to build a solution
   [x] - create sign functionality (negative / positive numbers display)
   [x] - create percentage functionality
   [x] - create memory functionality (store, remove and recall numbers)
+    [x] - M+ (memory add) will store any number displayed on the current display
+    [x] - M- (memory remove) will remove the stored number shown on current display if it exist, else will remove the last saved number.
+    [x] - MR (memory recall) will go through all stored numbers starting from the last saved number.
   [x] - make it accessible
     [x] - allow keyboard entry
     [x] - allow tabbing
