@@ -139,6 +139,8 @@ numberButtons.forEach(button => {
     calculator.appendNumber(button.innerHTML);
     //display numbers
     calculator.updateDisplay();
+    //stop event from bubbling up
+    event.stopPropagation();
   });
 });
 
@@ -147,6 +149,8 @@ operationButtons.forEach(button => {
   button.addEventListener('click', () => {
     calculator.chooseOperation(button.innerHTML);
     calculator.updateDisplay();
+    //stop event from bubbling up
+    event.stopPropagation();
   });
 });
 
@@ -182,4 +186,49 @@ memoryRecallButton.addEventListener('click', () => {
 equalsButton.addEventListener('click', () => {
   calculator.calculate();
   calculator.updateDisplay();
+});
+
+//handle keystrokes
+window.addEventListener('keyup', () => {
+  if ((event.key >= 0 && event.which >= 48) && (event.key <= 9 && event.which <= 57)) {
+    calculator.appendNumber(event.key);
+    calculator.updateDisplay();
+    console.log(`to event: ${event.key} to which ${event.which}`);
+  }
+
+  //clear key
+  if (event.key === 'Escape' && event.which === 27) {
+    calculator.clear();
+    calculator.updateDisplay();
+  }
+  //period key
+  if (event.key === '.' && event.which === 190) {
+    calculator.appendNumber(event.key);
+    calculator.updateDisplay();
+  }
+  //equals key
+  if ((event.key === '=' && event.which === 187) || (event.key === 'Enter' && event.which === 13)) {
+    calculator.calculate();
+    calculator.updateDisplay();
+  }
+  //divide
+  if (event.key === '/' && event.which === 191) {
+    calculator.chooseOperation('÷');
+    calculator.updateDisplay();
+  }
+  //multiply
+  if (event.key === '*' && event.which === 56) {
+    calculator.chooseOperation('x');
+    calculator.updateDisplay();
+  }
+  //minus
+  if (event.key === '-' && event.which === 189) {
+    calculator.chooseOperation('-');
+    calculator.updateDisplay();
+  }
+  //add
+  if (event.key === '+' && event.which === 187) {
+    calculator.chooseOperation('+');
+    calculator.updateDisplay();
+  }
 });
