@@ -72,8 +72,13 @@ class Calculator {
   }
 
   updateDisplay() {
-    this.currDisplay.innerText = this.currentOperand;
-    this.prevDisplay.innerText = this.previousOperand;
+    if (this.currentOperand.length > 10) {
+      this.currDisplay.innerText = 'Err';
+    }
+    else {
+      this.currDisplay.innerText = this.currentOperand;
+      this.prevDisplay.innerText = this.previousOperand;
+    }
   }
 
   calculate() {

@@ -66,7 +66,7 @@ equalsButton.addEventListener('click', () => {
 });
 
 //handle keystrokes
-window.addEventListener('keyup', () => {
+window.addEventListener('keyup', (event) => {
   if ((event.key >= 0 && event.which >= 48) && (event.key <= 9 && event.which <= 57)) {
     calculator.appendNumber(event.key);
     calculator.updateDisplay();
@@ -82,7 +82,7 @@ window.addEventListener('keyup', () => {
     calculator.updateDisplay();
   }
   //equals key
-  if ((event.key === '=' && event.which === 187) || (event.key === 'Enter' && event.which === 13)) {
+  if ((event.key === 'Enter')) {
     calculator.calculate();
     calculator.updateDisplay();
   }
@@ -102,7 +102,7 @@ window.addEventListener('keyup', () => {
     calculator.updateDisplay();
   }
   //add
-  if (event.key === '+' && event.which === 187) {
+  if (event.keyCode === 187) {
     calculator.chooseOperation('+');
     calculator.updateDisplay();
   }
