@@ -67,6 +67,7 @@ equalsButton.addEventListener('click', () => {
 
 //handle keystrokes
 window.addEventListener('keyup', (event) => {
+  event.preventDefault();
   if ((event.key >= 0 && event.which >= 48) && (event.key <= 9 && event.which <= 57)) {
     calculator.appendNumber(event.key);
     calculator.updateDisplay();

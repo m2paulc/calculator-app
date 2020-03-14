@@ -57,7 +57,7 @@ class Calculator {
     if (num === '.' && this.currentOperand.toString().includes('.')) return;
     if (num === '.' && this.currentOperand === '') {
       this.currentOperand = `0${num}`;
-    } else {
+    } else if (this.currentOperand.length < 11) {
       this.currentOperand = this.currentOperand.toString() + num.toString();
     }
   }
@@ -72,13 +72,8 @@ class Calculator {
   }
 
   updateDisplay() {
-    if (this.currentOperand.length > 10) {
-      this.currDisplay.innerText = 'Err';
-    }
-    else {
-      this.currDisplay.innerText = this.currentOperand;
-      this.prevDisplay.innerText = this.previousOperand;
-    }
+    this.currDisplay.innerText = this.currentOperand;
+    this.prevDisplay.innerText = this.previousOperand;
   }
 
   calculate() {
